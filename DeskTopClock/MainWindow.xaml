@@ -1,0 +1,28 @@
+﻿<Window x:Class="DeskTopClock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeskTopClock"
+        mc:Ignorable="d"
+        Title="Clock" Height="300" Width="500" WindowStyle="None" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:TimeConterter x:Key="cvtTime"/>
+        <local:ColorConverter x:Key="cvtColor"/>
+        <local:DateConverter x:Key="cvtDate"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Label Content="{Binding Path=Time, Converter= {StaticResource cvtTime}}" Margin="1,57,1,119" Background="{x:Null}" Foreground="{Binding Path=TextColor, Converter={StaticResource cvtColor}}" FontFamily="MJNgai PRC Medium_Dospy-DDC" FontSize="80" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseDoubleClick="Label_MouseDoubleClick">
+            <Label.Effect>
+                <DropShadowEffect Color="{Binding Path=BlurColor}" ShadowDepth="2" BlurRadius="20"/>
+            </Label.Effect>
+        </Label>
+        <Label Content="{Binding Path=Time, Converter={StaticResource cvtDate}}" Margin="80,188,80,70" Foreground="{Binding Path=TextColor, Converter={StaticResource cvtColor}}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="MJNgai PRC Medium_Dospy-DDC" FontSize="20">
+            <Label.Effect>
+                <DropShadowEffect Color="{Binding Path=BlurColor}" ShadowDepth="2" BlurRadius="20"/>
+            </Label.Effect>
+        </Label>
+
+    </Grid>
+</Window>
